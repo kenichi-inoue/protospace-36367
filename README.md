@@ -18,11 +18,11 @@
 
 ## comments テーブル
 
-| Column    | Type       | Options                  |
-| --------- | ---------- | ------------------------ |
-| text      | text       | null: false              |
-| user      | references |                          |
-| prototype | references |                          |
+| Column    | Type       | Options           |
+| --------- | ---------- | ----------------- |
+| text      | text       | null: false       |
+| user      | references |                   |
+| prototype | references |                   |
 
 ### Association
 
@@ -31,12 +31,12 @@
 
 ## prototypes テーブル
 
-| Column      | Type       | Options               |
-| ----------- | ---------- | --------------------- |
-| title       | string     | null: false           |
-| catch_copy  | text       | null: false           |
-| concept     | text       | null: false           |
-| user        | references |                       |
+| Column      | Type       | Options          |
+| ----------- | ---------- | ---------------- |
+| title       | string     | null: false      |
+| catch_copy  | text       | null: false      |
+| concept     | text       | null: false      |
+| user        | references |                  |
 
 ### Association
 
