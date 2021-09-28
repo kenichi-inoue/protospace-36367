@@ -24,7 +24,10 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    # @tweet = Tweet.find(params[:id])
+    # @prototype = Prototype.find(params[:id])  
+    # @prototype = Prototype.find(prototype_params[:id])
+    @prototype = Prototype.find(params[:id])
+    # @prototype = Prototype.find(prototype_params)
   end
 
   private  # private以下の記述はすべてプライベートメソッドになる
