@@ -43,6 +43,10 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def destroy
+    # @prototype = Prototype.find(params[:id])
+  end
+
 
   private  # private以下の記述はすべてプライベートメソッドになる
 
