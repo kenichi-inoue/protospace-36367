@@ -7,10 +7,6 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.new
   end
 
-  # def create
-  #   # @tweet = Tweet.new
-  # end
-
   def create
     # Prototype.create(prototype_params)
     # @user = User.find(params[:user_id])
@@ -20,7 +16,7 @@ class PrototypesController < ApplicationController
       redirect_to root_path(@user)
     else
       render :new
-    end
+    end 
   end
 
   def show
@@ -28,6 +24,8 @@ class PrototypesController < ApplicationController
     # @prototype = Prototype.find(prototype_params[:id])
     @prototype = Prototype.find(params[:id])
     # @prototype = Prototype.find(prototype_params)
+    @comment = Comment.new
+    @comments = @prototype.comments.includes(:user)
   end
 
   def edit
@@ -47,9 +45,7 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
     @prototype.destroy
     redirect_to root_path
-
   end
-
 
   private  # private以下の記述はすべてプライベートメソッドになる
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'prototypes/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "prototypes#index"
-  resources :prototypes, only: [:index, :new, :create, :show, :edit, :update, :destroy, :create]
-
+  resources :prototypes, only: [:index, :new, :show, :edit, :update, :destroy, :create] do
+    resources :comments, only: :create
+  end
 end
