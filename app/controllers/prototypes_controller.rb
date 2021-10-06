@@ -1,5 +1,8 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :set_prototype, only: [:edit, :show, :update]
+  before_action :move_to_index, except: [:index, :show]
+
 
   def index
     @prototype = Prototype.all
@@ -24,18 +27,18 @@ class PrototypesController < ApplicationController
   def show
     # @prototype = Prototype.find(params[:id])  
     # @prototype = Prototype.find(prototype_params[:id])
-    @prototype = Prototype.find(params[:id])
+    # @prototype = Prototype.find(params[:id])
     # @prototype = Prototype.find(prototype_params)
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
+    # @prototype = Prototype.find(params[:id])
   end
 
   def update
-    @prototype = Prototype.find(params[:id])
+    # @prototype = Prototype.find(params[:id])
     if @prototype.update(prototype_params)
       redirect_to prototype_path
     else
@@ -63,6 +66,17 @@ class PrototypesController < ApplicationController
 
   def any_method  # プライベートメソッド
     # （処理）
+  end
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def move_to_index
+    # @prototype = Prototype.find(params[:id])
+      unless user_signed_in? && (current_user.name == @prototype.user.name)
+        redirect_to action: :index
+      end
   end
 
 end
